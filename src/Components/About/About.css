@@ -122,7 +122,7 @@
   .about {
     gap: 80px;
     margin: 50px 70px;
-    align-items: start;
+    align-items: center;
   }
 
   .about-title h1 {
@@ -162,7 +162,8 @@
   }
 
   .about-achievements {
-    justify-content: space-between;
+    display: grid;
+    gap: 20px;
   }
 
   .about-achievement {

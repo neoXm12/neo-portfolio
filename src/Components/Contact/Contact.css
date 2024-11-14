@@ -131,7 +131,7 @@
   .contact {
     gap: 50px;
     margin: 50px 70px;
-    align-items: start;
+    align-items: center;
   }
   .contact-title h1 {
     padding: 0;
@@ -146,13 +146,16 @@
 
   .contact-section {
     flex-direction: column;
+    row-gap: 20px;
   }
 
   .contact-left h1 {
+    text-align: center;
     font-size: 54px;
   }
 
   .contact-left p {
+    text-align: center;
     font-size: 18px;
   }
 

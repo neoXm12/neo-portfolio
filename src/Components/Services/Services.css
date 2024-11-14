@@ -86,7 +86,7 @@
 
 @media (max-width: 768px) {
   .services {
-    align-items: start;
+    align-items: center;
     gap: 70px;
     margin: 20px 70px;
   }
@@ -121,7 +121,7 @@
   }
 
   .services-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 }
