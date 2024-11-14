@@ -1,8 +1,8 @@
 import "./Hero.css";
 import profile from "../../assets/my-profile.jpg";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { useState } from "react";
 import arrow_left from "../../assets/arrow_left.svg";
+import { Link } from "react-scroll";
 
 const Hero = () => {
   const [showImage, setShowImage] = useState(false);
@@ -23,9 +23,17 @@ const Hero = () => {
       </p>
       <div className="hero-action">
         <div className="hero-connect">
-          <AnchorLink className="anchor-link" offset={50} href="#contact">
+          <Link
+            className="anchor-link"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-200}
+            duration={800}
+            href="#contact"
+          >
             Connect with me
-          </AnchorLink>
+          </Link>
         </div>
         <div
           onClick={handleClick}
