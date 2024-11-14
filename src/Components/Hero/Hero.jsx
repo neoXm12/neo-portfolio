@@ -1,5 +1,5 @@
 import "./Hero.css";
-import profile from "../../assets/my-profile.jpg";
+import profile from "../../assets/my-profile.JPG";
 import { useState } from "react";
 import arrow_left from "../../assets/arrow_left.svg";
 import { Link } from "react-scroll";
