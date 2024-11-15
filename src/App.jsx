@@ -4,10 +4,12 @@ import About from "./Components/About/About";
 import Services from "./Components/Services/Services";
 import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
+import { Analytics } from "@vercel/analytics";
 
 const App = () => {
   return (
     <div>
+      <Analytics />
       <Navbar />
       <Hero />
       <About />
