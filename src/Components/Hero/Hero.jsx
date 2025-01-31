@@ -15,7 +15,7 @@ const Hero = () => {
     <div id="home" className="hero">
       <img src={profile} alt="" className="my-profile" />
       <h1>
-        <span>Hey there! This is Nirmad Mudvari</span>, welcome to my portfolio{" "}
+        <span>Hey there!! This is Nirmad Mudvari</span>, welcome to my portfolio{" "}
       </h1>
       <p>
         Experienced SDET focused on testing excellence, automation, and
