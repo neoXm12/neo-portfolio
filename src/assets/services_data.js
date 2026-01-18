@@ -13,17 +13,17 @@ const Services_Data = [
   {
     s_no: "03",
     s_name: "API Automation",
-    s_desc: "Cucumber, REST Assured, Cypress, Playwright, Postman",
+    s_desc: "Cucumber, REST Assured, Jest, Cypress, Playwright, Postman",
   },
   {
     s_no: "04",
     s_name: "Performance Testing",
-    s_desc: "NeoLoad, JMeter, BlazeMeter",
+    s_desc: "NeoLoad, JMeter, K6, BlazeMeter",
   },
   {
     s_no: "05",
     s_name: "Database",
-    s_desc: "SQL Server, MySQL,Postgres, Oracle, MongoDB",
+    s_desc: "SQL Server, MySQL,Postgres, MongoDB",
   },
   {
     s_no: "06",

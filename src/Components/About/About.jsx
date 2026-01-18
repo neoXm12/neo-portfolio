@@ -16,11 +16,10 @@ const About = () => {
         <div className="about-right">
           <div className="about-para">
             <p>
-              As an SDET , I specialize in
-              building automated test frameworks, optimizing testing processes,
-              and ensuring software reliability. I believe in the power of
-              automation to drive continuous improvement and enable fast,
-              high-quality releases.
+              As an SDET , I specialize in building automated test frameworks,
+              optimizing testing processes, and ensuring software reliability. I
+              believe in the power of automation to drive continuous improvement
+              and enable fast, high-quality releases.
             </p>
             <p>
               I am deeply passionate about creating high-quality software, and I
@@ -52,8 +51,8 @@ const About = () => {
       </div>
       <div className="about-achievements">
         <div className="about-achievement">
-          <h1>8+</h1>
-          <p>YEARS OF TOTAL EXPERIENCE</p>
+          <h1>Numerous</h1>
+          <p>YEARS OF EXPERIENCE</p>
         </div>
         <hr />
         <div className="about-achievement">
