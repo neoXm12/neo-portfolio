@@ -1,182 +1,99 @@
 .about {
+  display: grid;
+  gap: 32px;
+}
+
+.about-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
-  margin: 80ox 170px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.about-title {
-  position: relative;
-}
-
-.about-title h1 {
-  padding: 0px 30px;
-  font-size: 90px;
-  font-weight: 600;
-}
-
-.about-title img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.about-sections {
-  display: flex;
-  gap: 80px;
-}
-
-.my-profile-img {
-  width: 400px;
-  height: auto;
-  border-radius: 50%;
-  border: 5px solid #000;
-  object-fit: cover;
-}
-
-.about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-}
-
-.about-para {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.about-skills {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.about-skill {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  transition: 0.3s;
-}
-
-.about-skill p {
-  min-width: 150px;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.about-skill hr {
-  outline: none;
-  border: none;
-  width: 50%;
-  height: 8px;
-  border-radius: 50px;
-  background: linear-gradient(264deg, #df8908 -5.09%, #b415fb 106.28%);
-}
-
-.about-achievements {
-  display: flex;
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+  align-items: stretch;
   width: 100%;
-  justify-content: space-around;
-  margin-bottom: 80px;
+  max-width: none;
 }
 
-.about-achievement {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: 0.5s;
+.about-copy {
+  display: grid;
+  gap: 30px;
 }
 
-.about-achievement h1 {
-  font-size: 60px;
-  font-weight: 700;
-  background: linear-gradient(264deg, #df8908 -5.09%, #b415fb 106.28%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.about-summary p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.9;
+  max-width: 720px;
 }
 
-.about-achievement p {
-  font-size: 22px;
-  font-weight: 500;
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.about-skill:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
+.about-pillars div {
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
-.about-achievement:hover {
-  transform: scale(1.12);
-  transition: 0.5s;
+.light .about-pillars div {
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.14);
 }
 
-@media (max-width: 768px) {
-  .about {
-    gap: 80px;
-    margin: 50px 70px;
-    align-items: center;
+.about-pillars strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.about-pillars span {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.about-cards {
+  display: grid;
+  gap: 20px;
+}
+
+.about-card {
+  padding: 28px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--card-shadow);
+}
+
+.light .about-card {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.about-card h3 {
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+}
+
+.about-card p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 980px) {
+  .about-grid {
+    grid-template-columns: 1fr;
   }
 
-  .about-title h1 {
-    font-size: 50px;
-    padding: 0;
-  }
-
-  .about-title img {
-    width: 130px;
-    right: -20px;
-  }
-
-  .about-sections {
+  .about-header {
     flex-direction: column;
-  }
-
-  .about-left {
-    display: none;
-  }
-
-  .about-para {
-    font-size: 18px;
-    line-height: 32px;
-  }
-
-  .about-skill {
-    gap: 20px;
-    align-items: center;
-  }
-
-  .about-skill p {
-    font-size: 20px;
-  }
-
-  .about-skill hr {
-    height: 6px;
-  }
-
-  .about-achievements {
-    display: grid;
-    gap: 20px;
-  }
-
-  .about-achievement {
-    gap: 10px;
-  }
-
-  .about-achievement h1 {
-    font-size: 34px;
-    font-weight: 700;
-  }
-
-  .about-achievement p {
-    text-align: center;
-    font-size: 16px;
   }
 }

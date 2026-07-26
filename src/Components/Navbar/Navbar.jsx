@@ -1,133 +1,87 @@
+/* eslint-disable react/prop-types */
 import "./Navbar.css";
-import mylogo from "../../assets/logonew.svg";
-import underline from "../../assets/nav_underline.svg";
-import { useRef, useState } from "react";
 import menu_open from "../../assets/menu_open.svg";
 import menu_close from "../../assets/menu_close.svg";
+import { useState } from "react";
 import { Link } from "react-scroll";
 
-const Navbar = () => {
+const Navbar = ({ theme, setTheme }) => {
   const [menu, setMenu] = useState("");
-  const menuRef = useRef();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const openMenu = () => {
-    menuRef.current.style.right = "0";
+  const openMenu = () => setIsMenuOpen(true);
+  const closeMenu = () => setIsMenuOpen(false);
+  const handleBackdropKeyDown = (e) => {
+    if (e.key === "Escape" || e.key === "Enter") {
+      closeMenu();
+    }
   };
-  const closeMenu = () => {
-    menuRef.current.style.right = "-350px";
-  };
+
   return (
-    <div className="navbar">
-      <img src={mylogo} alt="logo" className="nav-icon" />
-      <img
-        src={menu_open}
-        onClick={openMenu}
-        alt="logo"
-        className="nav-mob-open"
-      />
-      <ul ref={menuRef} className="nav-menu">
-        <img
-          src={menu_close}
-          onClick={closeMenu}
-          className="nav-mob-close"
-          alt=""
-        />
-        <li>
-          <Link
-            to="home" // This should correspond to the section's id
-            spy={true} // Track if this section is in view
-            smooth={true} // Enable smooth scrolling
-            offset={-200} // Adjust for navbar height (use negative value)
-            duration={800} // Duration of the smooth scroll
-            onSetActive={() => setMenu("home")}
-          >
-            <p
-              onClick={() => {
-                setMenu("home"); // Update active state on click
-              }}
-            >
-              {" "}
-              Home{" "}
-            </p>
-          </Link>
-          {menu === "home" ? <img src={underline} alt="" /> : <></>}
-        </li>
-
-        <li>
-          <Link
-            to="about"
-            spy={true}
-            smooth={true}
-            offset={-200}
-            duration={800}
-            onSetActive={() => setMenu("about")}
-          >
-            <p
-              onClick={() => {
-                setMenu("about");
-              }}
-            >
-              {" "}
-              About Me{" "}
-            </p>
-          </Link>
-          {menu === "about" ? <img src={underline} alt="" /> : <></>}
-        </li>
-        <li>
-          <Link
-            to="services"
-            spy={true}
-            smooth={true}
-            offset={-200}
-            duration={800}
-            onSetActive={() => setMenu("services")}
-          >
-            <p
-              onClick={() => {
-                setMenu("services");
-              }}
-            >
-              {" "}
-              Top Skills{" "}
-            </p>
-          </Link>
-          {menu === "services" ? <img src={underline} alt="" /> : <></>}
-        </li>
-        <li>
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-200}
-            duration={800}
-            onSetActive={() => setMenu("contact")}
-          >
-            <p
-              onClick={() => {
-                setMenu("contact");
-              }}
-            >
-              {" "}
-              Contact{" "}
-            </p>
-          </Link>
-          {menu === "contact" ? <img src={underline} alt="" /> : <></>}
-        </li>
-      </ul>
-      <div className="nav-connect">
-        <Link
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-200}
-          duration={800}
-          onSetActive={() => setMenu("contact")}
-          onClick={() => setMenu("contact")}
-        >
-          Connect with me
-        </Link>
+    <nav className="navbar">
+      <div className="nav-brand">
+        <div className="nav-brand-text">
+          <span>Nirmad</span>
+          <small>QA Engineer / Automation Lead</small>
+        </div>
       </div>
-    </div>
+      <button className="nav-theme" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        {theme === "dark" ? "Light" : "Dark"}
+      </button>
+      <button
+        type="button"
+        className="nav-mobile-open"
+        onClick={openMenu}
+        aria-label="Open menu"
+        aria-expanded={isMenuOpen}
+        aria-controls="site-menu"
+      >
+        <img src={menu_open} alt="" />
+      </button>
+      <div
+        className={`nav-backdrop ${isMenuOpen ? "active" : ""}`}
+        onClick={closeMenu}
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleBackdropKeyDown}
+        aria-label="Close menu"
+      />
+      <div id="site-menu" className="nav-menu" aria-hidden={!isMenuOpen}>
+        <button
+          type="button"
+          className="nav-mobile-close"
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
+          <img src={menu_close} alt="" />
+        </button>
+        {[
+          { id: "home", label: "Home" },
+          { id: "about", label: "About" },
+          { id: "expertise", label: "Expertise" },
+          { id: "architecture", label: "Architecture" },
+          { id: "data-quality", label: "Data QA" },
+          { id: "experience", label: "Experience" },
+          { id: "skills", label: "Skills" },
+          { id: "projects", label: "Projects" },
+          { id: "contact", label: "Contact" },
+        ].map((item) => (
+          <Link
+            key={item.id}
+            className={menu === item.id ? "nav-link active" : "nav-link"}
+            to={item.id}
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={700}
+            onSetActive={() => setMenu(item.id)}
+            onClick={() => setMenu(item.id)}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 };
 

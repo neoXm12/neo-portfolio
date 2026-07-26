@@ -1,53 +1,69 @@
 import "./Hero.css";
-import profile from "../../assets/my-profile.JPG";
-import { useState } from "react";
-import arrow_left from "../../assets/arrow_left.svg";
+import profile from "../../assets/profile-2026.jpeg";
 import { Link } from "react-scroll";
 
 const Hero = () => {
-  const [showImage, setShowImage] = useState(false);
-
-  const handleClick = () => {
-    setShowImage((prev) => !prev);
+  const handleResumeRequest = () => {
+    const template =
+      "Hello Nirmad,\n\nI am interested in your QA automation and quality engineering experience. Could you please share your resume?\n\nThank you,\n";
+    sessionStorage.setItem("resumeRequestTemplate", template);
+    window.dispatchEvent(
+      new CustomEvent("resumeRequestTemplateSet", {
+        detail: template,
+      })
+    );
   };
 
   return (
-    <div id="home" className="hero">
-      <img src={profile} alt="" className="my-profile" />
-      <h1>
-        <span>Hey there!! This is Nirmad Mudvari</span>, welcome to my portfolio{" "}
-      </h1>
-      <p>
-        Experienced SDET focused on testing excellence, automation, and
-        continuous improvement.
-      </p>
-      <div className="hero-action">
-        <div className="hero-connect">
+    <section id="home" className="hero section reveal">
+      <div className="hero-copy">
+        <span className="eyebrow">Senior QA Automation Engineer</span>
+        <h1>Building enterprise test architecture and delivering quality at scale.</h1>
+        <p>
+          Quality Engineering Leader with deep expertise in API, UI, integration,
+          performance, load, and data validation. I build automation platforms,
+          data QA pipelines, and modern CI/CD quality gates for enterprise teams.
+        </p>
+        <div className="hero-actions">
           <Link
-            className="anchor-link"
+            className="button button-primary"
+            to="experience"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={800}
+          >
+            View Experience
+          </Link>
+          <Link
+            className="button button-secondary"
             to="contact"
             spy={true}
             smooth={true}
-            offset={-200}
+            offset={-100}
             duration={800}
-            href="#contact"
+            onClick={handleResumeRequest}
           >
-            Connect with me
+            Download Resume
           </Link>
         </div>
-        <div
-          onClick={handleClick}
-          style={{ cursor: "pointer" }}
-          className="hero-resume"
-        >
-          {showImage ? (
-            <img src={arrow_left} alt="" className="arrow-left-icon" />
-          ) : (
-            <div className="resume-para">My Resume</div>
-          )}
+      </div>
+      <div className="hero-panel">
+        <div className="hero-card">
+          <img src={profile} alt="Nirmad Mudvari portrait" className="hero-avatar" />
+          <div className="hero-stats">
+            <div>
+              <strong>Enterprise QA leadership</strong>
+              <span>QA automation, Data and Software Development</span>
+            </div>
+            <div>
+              <strong>Enterprise scale</strong>
+              <span>Restaurant, Retail, healthcare, SaaS, cloud, and analytics</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,31 +1,22 @@
 import "./Services.css";
-import theme_pattern from "../../assets/theme_pattern.svg";
-import Services_Data from "../../assets/services_data";
-import more_icon from "../../assets/more-icon.svg";
+import { expertiseHighlights } from "../../data/siteData";
 
 const Services = () => {
   return (
-    <div id="services" className="services">
-      <div className="services-title">
-        <h1>Top Skills</h1>
-        <img src={theme_pattern} alt="" />
+    <section id="expertise" className="section services reveal">
+      <div className="section-heading">
+        <p className="section-eyebrow">Technical Expertise</p>
+        <h2>Core capabilities that power enterprise software delivery, QA, and test architecture.</h2>
       </div>
-      <div className="services-container">
-        {Services_Data.map((service, index) => {
-          return (
-            <div key={index} className="services-format">
-              <h3>{service.s_no}</h3>
-              <h2>{service.s_name}</h2>
-              <p>{service.s_desc}</p>
-              <div className="services-readmore">
-                <p>and more</p>
-                <img src={more_icon} alt="" className="more-icon" />
-              </div>
-            </div>
-          );
-        })}
+      <div className="services-grid">
+        {expertiseHighlights.map((service, index) => (
+          <article key={index} className="services-card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

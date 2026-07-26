@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore environment variables file
+# Ignore environment variables files
 .env
+.env.local
+.env.*.local
+
+# Ignore local Lighthouse audit reports
+lighthouse*.json
