@@ -1,71 +1,70 @@
 import "./About.css";
-import theme_pattern from "../../assets/theme_pattern.svg";
-import profile from "../../assets/my-profile.JPG";
 
 const About = () => {
   return (
-    <div id="about" className="about">
-      <div className="about-title">
-        <h1>About me</h1>
-        <img src={theme_pattern} alt="" />
-      </div>
-      <div className="about-sections">
-        <div className="about-left">
-          <img src={profile} alt="" className="my-profile-img" />
+    <section id="about" className="section about reveal">
+      <div className="about-header">
+        <div>
+          <p className="section-eyebrow">About Me</p>
+          <h2>Senior QA Automation Engineer with a strong Data QA foundation and software development experience.</h2>
         </div>
-        <div className="about-right">
-          <div className="about-para">
+      </div>
+      <div className="about-grid">
+        <div className="about-copy">
+          <div className="about-summary">
             <p>
-              As an SDET , I specialize in building automated test frameworks,
-              optimizing testing processes, and ensuring software reliability. I
-              believe in the power of automation to drive continuous improvement
-              and enable fast, high-quality releases.
+              I design test architecture and quality engineering solutions for enterprise
+              systems, with hands-on experience in API, UI, integration, performance,
+              load, data validation, and software development. I partner with development,
+              product, and data teams to build scalable automation, repeatable quality
+              practices, and measurable release confidence.
             </p>
             <p>
-              I am deeply passionate about creating high-quality software, and I
-              see testing as an integral part of the development lifecycle, not
-              just an afterthought. I approach testing with the same principles
-              I apply to software development: a focus on scalability,
-              efficiency, and continuous improvement.{" "}
+              My work spans cloud-native environments, analytics pipelines, and modern
+              CI/CD workflows. I deliver automation platforms that reduce regression
+              cycle time, uncover hidden risk, and improve software trust across teams.
             </p>
           </div>
-          <div className="about-skills">
-            <div className="about-skill">
-              <p>Scalability</p>
-              <hr style={{ width: "80%" }}></hr>
+          <div className="about-pillars">
+            <div>
+              <strong>Leadership</strong>
+              <span>Quality engineering strategy and cross-functional alignment</span>
             </div>
-            <div className="about-skill">
-              <p>Efficiency </p>
-              <hr style={{ width: "80%" }}></hr>
+            <div>
+              <strong>Reliability</strong>
+              <span>Data validation, pipeline reconciliation, and analytics accuracy</span>
             </div>
-            <div className="about-skill">
-              <p>Improvement</p>
-              <hr style={{ width: "80%" }}></hr>
-            </div>
-            <div className="about-skill">
-              <p>Teamwork</p>
-              <hr style={{ width: "80%" }}></hr>
+            <div>
+              <strong>Scalability</strong>
+              <span>Reusable automation frameworks and CI/CD quality gates</span>
             </div>
           </div>
         </div>
+        <div className="about-cards">
+          <div className="about-card">
+            <h3>Enterprise Test Architecture</h3>
+            <p>
+              Building modular automation frameworks, shared test services, and
+              standards for cross-team reliability at scale.
+            </p>
+          </div>
+          <div className="about-card">
+            <h3>Data Quality & Validation</h3>
+            <p>
+              Validating pipelines, reconciling datasets, and ensuring analytics results
+              are trusted before release.
+            </p>
+          </div>
+          <div className="about-card">
+            <h3>Developer-aligned Software Delivery</h3>
+            <p>
+              Partnering with engineering teams to build maintainable code, testable APIs,
+              and automation-friendly software across the delivery lifecycle.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="about-achievements">
-        <div className="about-achievement">
-          <h1>Numerous</h1>
-          <p>YEARS OF EXPERIENCE</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-          <h1>Quality </h1>
-          <p>HIGHEST PRIORITY</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-          <h1>Multiple</h1>
-          <p>PROJECTS COMPLETION</p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
