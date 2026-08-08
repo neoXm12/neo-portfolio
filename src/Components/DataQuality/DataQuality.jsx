@@ -9,8 +9,8 @@ const DataQuality = () => {
           <p className="section-eyebrow">Data Quality Leadership</p>
           <h2>Protecting enterprise data pipelines and analytics trust.</h2>
           <p className="section-description">
-            I partner with data engineering teams to validate ETL/ELT pipelines, reconcile
-            datasets, and enforce quality gates so reporting and downstream systems remain reliable.
+            I partner with data engineers to create and validate ETL/ELT pipelines, reconcile
+            datasets, enforce quality gates, and support analytics-ready dataset delivery so reporting and downstream systems remain reliable.
           </p>
         </div>
         <div className="data-quality-facts">

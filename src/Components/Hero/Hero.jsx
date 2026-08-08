@@ -5,7 +5,7 @@ import { Link } from "react-scroll";
 const Hero = () => {
   const handleResumeRequest = () => {
     const template =
-      "Hello Nirmad,\n\nI am interested in your QA automation and quality engineering experience. Could you please share your resume?\n\nThank you,\n";
+      "Hello Nirmad,\n\nI am interested in your QA automation and Data engineering experience. Could you please share your resume?\n\nThank you,\n";
     sessionStorage.setItem("resumeRequestTemplate", template);
     window.dispatchEvent(
       new CustomEvent("resumeRequestTemplateSet", {
@@ -18,11 +18,12 @@ const Hero = () => {
     <section id="home" className="hero section reveal">
       <div className="hero-copy">
         <span className="eyebrow">Senior QA Automation Engineer</span>
-        <h1>Building enterprise test architecture and delivering quality at scale.</h1>
+        <h1>Building enterprise test architecture, data pipelines, and delivering quality at scale.</h1>
         <p>
           Quality Engineering Leader with deep expertise in API, UI, integration,
           performance, load, and data validation. I build automation platforms,
-          data QA pipelines, and modern CI/CD quality gates for enterprise teams.
+          data QA pipelines, analytics-ready pipeline validation, and modern
+          CI/CD quality gates for enterprise teams.
         </p>
         <div className="hero-actions">
           <Link
