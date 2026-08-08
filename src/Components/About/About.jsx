@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-header">
         <div>
           <p className="section-eyebrow">About Me</p>
-          <h2>Senior QA Automation Engineer with a strong Data QA foundation and software development experience.</h2>
+          <h2>Senior QA / Automation Lead with strong Data QA and Data engineering experience.</h2>
         </div>
       </div>
       <div className="about-grid">
@@ -15,14 +15,14 @@ const About = () => {
             <p>
               I design test architecture and quality engineering solutions for enterprise
               systems, with hands-on experience in API, UI, integration, performance,
-              load, data validation, and software development. I partner with development,
-              product, and data teams to build scalable automation, repeatable quality
+              load, data validation, analytics pipelines, and software development. I partner with development,
+              product, and data engineering teams to build scalable automation, repeatable quality
               practices, and measurable release confidence.
             </p>
             <p>
-              My work spans cloud-native environments, analytics pipelines, and modern
-              CI/CD workflows. I deliver automation platforms that reduce regression
-              cycle time, uncover hidden risk, and improve software trust across teams.
+              My work spans cloud-native environments, ETL/ELT workflows, and modern
+              CI/CD pipelines. I deliver automation platforms that reduce regression
+              cycle time, uncover hidden risk, and keep analytics and reporting data trusted across teams.
             </p>
           </div>
           <div className="about-pillars">
@@ -32,7 +32,7 @@ const About = () => {
             </div>
             <div>
               <strong>Reliability</strong>
-              <span>Data validation, pipeline reconciliation, and analytics accuracy</span>
+              <span>Data engineering governance, validation, and analytics accuracy</span>
             </div>
             <div>
               <strong>Scalability</strong>

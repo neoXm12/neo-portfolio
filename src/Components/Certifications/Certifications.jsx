@@ -5,8 +5,8 @@ const Certifications = () => {
   return (
     <section id="certifications" className="section certifications reveal">
       <div className="section-heading">
-        <p className="section-eyebrow">Certifications</p>
-        <h2>Building credibility through continuous quality and data engineering growth.</h2>
+        <p className="section-eyebrow">Professional Growth</p>
+        <h2>Building credibility through continuous quality engineering and data engineering growth.</h2>
       </div>
       <div className="certifications-grid">
         {certificationItems.map((item, index) => (

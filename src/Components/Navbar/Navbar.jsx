@@ -22,7 +22,7 @@ const Navbar = ({ theme, setTheme }) => {
       <div className="nav-brand">
         <div className="nav-brand-text">
           <span>Nirmad</span>
-          <small>QA Engineer / Automation Lead</small>
+          <small>QA Automation Lead / Data Engineer</small>
         </div>
       </div>
       <button className="nav-theme" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
@@ -60,7 +60,7 @@ const Navbar = ({ theme, setTheme }) => {
           { id: "about", label: "About" },
           { id: "expertise", label: "Expertise" },
           { id: "architecture", label: "Architecture" },
-          { id: "data-quality", label: "Data QA" },
+          { id: "data-quality", label: "Data" },
           { id: "experience", label: "Experience" },
           { id: "skills", label: "Skills" },
           { id: "projects", label: "Projects" },
