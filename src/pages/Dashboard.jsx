@@ -8,7 +8,7 @@ import StatTile from "../Components/ClaimsDashboard/StatTile";
 import DataTable from "../Components/ClaimsDashboard/DataTable";
 import Lineage from "../Components/ClaimsDashboard/Lineage";
 import GithubLink from "../Components/ClaimsDashboard/GithubLink";
-import { codeIndex, repos } from "../data/repoLinks";
+import { PRIVATE_REPO_NOTE, codeIndex, isPrivateRepo, repos } from "../data/repoLinks";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import {
   formatCurrency,
@@ -100,7 +100,7 @@ const Dashboard = () => {
             View the pipeline code
           </GithubLink>
           <GithubLink href={repos.source} className="gh-link-secondary">
-            View the claims API
+            Claims API
           </GithubLink>
           <GithubLink href={repos.portfolio} className="gh-link-secondary">
             View this site&apos;s code
@@ -287,11 +287,7 @@ const Dashboard = () => {
           <p className="section-eyebrow">Read the code</p>
           <h2>Every stage above, in full.</h2>
           <p className="section-description">
-            Three repositories:{" "}
-            <GithubLink href={repos.source} showMark={false} className="gh-link-text">
-              claims-project
-            </GithubLink>{" "}
-            generates the data,{" "}
+            Three repositories: <code>claims-project</code> generates the data,{" "}
             <GithubLink href={repos.pipeline} showMark={false} className="gh-link-text">
               claims-gcs-to-delta
             </GithubLink>{" "}
@@ -299,31 +295,48 @@ const Dashboard = () => {
             <GithubLink href={repos.portfolio} showMark={false} className="gh-link-text">
               neo-portfolio
             </GithubLink>{" "}
-            serves it. Jump straight to the modules behind each part of this page.
+            serves it. The first is kept private — happy to walk through it or share access on
+            request. Jump straight to the modules behind each part of this page.
           </p>
         </div>
 
         <ul className="code-index">
-          {codeIndex.map((entry) => (
-            <li key={entry.path}>
-              <a
-                href={entry.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="code-index-card"
-              >
+          {codeIndex.map((entry) => {
+            const locked = isPrivateRepo(entry.href);
+            const body = (
+              <>
                 <div className="code-index-head">
                   <h3>{entry.title}</h3>
                   <span aria-hidden="true" className="code-index-arrow">
-                    ↗
+                    {locked ? "🔒" : "↗"}
                   </span>
                 </div>
                 <code>{entry.path}</code>
                 <p>{entry.detail}</p>
-                <span className="visually-hidden">(opens in a new tab)</span>
-              </a>
-            </li>
-          ))}
+              </>
+            );
+
+            return (
+              <li key={entry.path}>
+                {locked ? (
+                  <div className="code-index-card code-index-card-locked" data-note={PRIVATE_REPO_NOTE}>
+                    {body}
+                    <span className="code-index-locked-note">{PRIVATE_REPO_NOTE}</span>
+                  </div>
+                ) : (
+                  <a
+                    href={entry.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="code-index-card"
+                  >
+                    {body}
+                    <span className="visually-hidden">(opens in a new tab)</span>
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </section>
 

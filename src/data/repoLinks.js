@@ -5,8 +5,9 @@
  * transformation modules are `*_ingestion` / `*_transformation` /
  * `*_aggregation`, not the `*_layer.py` names that repo's README uses.
  *
- * Both repos are private at time of writing; the links resolve once they're
- * made public.
+ * The claims API repo stays private — it exposes unauthenticated write
+ * endpoints, so it isn't advertised publicly. References to it render as
+ * greyed, unlinked labels rather than links that would 404 for visitors.
  */
 const SOURCE_REPO = "https://github.com/neoXm12/claims-project";
 const PIPELINE_REPO = "https://github.com/neoXm12/claims-gcs-to-delta";
@@ -20,6 +21,17 @@ export const repos = {
   pipeline: PIPELINE_REPO,
   portfolio: PORTFOLIO_REPO,
 };
+
+/**
+ * Repos not published on GitHub. To open one up later, drop it from this list —
+ * every reference across the page turns back into a working link on its own.
+ */
+const PRIVATE_REPOS = [SOURCE_REPO];
+
+export const isPrivateRepo = (href) =>
+  Boolean(href) && PRIVATE_REPOS.some((repo) => href.startsWith(repo));
+
+export const PRIVATE_REPO_NOTE = "Private repo — happy to share access on request.";
 
 export const codeLinks = {
   // claims-project — the NestJS API where claims originate

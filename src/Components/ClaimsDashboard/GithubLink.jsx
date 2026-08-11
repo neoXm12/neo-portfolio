@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { PRIVATE_REPO_NOTE, isPrivateRepo } from "../../data/repoLinks";
 
 const GithubMark = () => (
   <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" className="gh-mark">
@@ -9,18 +10,44 @@ const GithubMark = () => (
   </svg>
 );
 
-/** External link to source. Always opens in a new tab, and says so to screen readers. */
-const GithubLink = ({ href, children, className = "", showMark = true }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`gh-link ${className}`.trim()}
-  >
-    {showMark && <GithubMark />}
-    <span>{children}</span>
-    <span className="visually-hidden"> (opens in a new tab)</span>
-  </a>
+const LockMark = () => (
+  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" className="gh-mark">
+    <path
+      fill="currentColor"
+      d="M8 1a3.5 3.5 0 0 0-3.5 3.5V6H4a1.5 1.5 0 0 0-1.5 1.5v6A1.5 1.5 0 0 0 4 15h8a1.5 1.5 0 0 0 1.5-1.5v-6A1.5 1.5 0 0 0 12 6h-.5V4.5A3.5 3.5 0 0 0 8 1Zm2 5H6V4.5a2 2 0 1 1 4 0V6Z"
+    />
+  </svg>
 );
+
+/**
+ * Link to source. Public repos link out in a new tab; references to a repo
+ * that isn't published render as a greyed, unlinked label instead — a link
+ * that 404s reads as broken, where an explicit "private" reads as deliberate.
+ */
+const GithubLink = ({ href, children, className = "", showMark = true }) => {
+  if (isPrivateRepo(href)) {
+    return (
+      <span className={`gh-link gh-link-locked ${className}`.trim()} data-note={PRIVATE_REPO_NOTE}>
+        {showMark && <LockMark />}
+        <span>{children}</span>
+        <span className="gh-locked-tag">private</span>
+        <span className="visually-hidden"> — {PRIVATE_REPO_NOTE}</span>
+      </span>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`gh-link ${className}`.trim()}
+    >
+      {showMark && <GithubMark />}
+      <span>{children}</span>
+      <span className="visually-hidden"> (opens in a new tab)</span>
+    </a>
+  );
+};
 
 export default GithubLink;
