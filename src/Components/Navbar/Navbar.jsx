@@ -4,10 +4,27 @@ import menu_open from "../../assets/menu_open.svg";
 import menu_close from "../../assets/menu_close.svg";
 import { useState } from "react";
 import { Link } from "react-scroll";
+import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
+
+const SECTIONS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "expertise", label: "Expertise" },
+  { id: "architecture", label: "Architecture" },
+  { id: "data-quality", label: "Data" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 const Navbar = ({ theme, setTheme }) => {
   const [menu, setMenu] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const isHome = pathname === "/";
 
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
@@ -17,13 +34,21 @@ const Navbar = ({ theme, setTheme }) => {
     }
   };
 
+  // Off the home route the sections aren't mounted, so react-scroll has
+  // nothing to target — route home first and let Home perform the scroll.
+  const goToSection = (id) => {
+    setMenu(id);
+    closeMenu();
+    navigate("/", { state: { scrollTo: id } });
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-brand">
-        <div className="nav-brand-text">
+        <RouterLink to="/" className="nav-brand-text" onClick={closeMenu}>
           <span>Nirmad</span>
           <small>QA Automation Lead / Data Engineer</small>
-        </div>
+        </RouterLink>
       </div>
       <button className="nav-theme" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
         {theme === "dark" ? "Light" : "Dark"}
@@ -55,31 +80,42 @@ const Navbar = ({ theme, setTheme }) => {
         >
           <img src={menu_close} alt="" />
         </button>
-        {[
-          { id: "home", label: "Home" },
-          { id: "about", label: "About" },
-          { id: "expertise", label: "Expertise" },
-          { id: "architecture", label: "Architecture" },
-          { id: "data-quality", label: "Data" },
-          { id: "experience", label: "Experience" },
-          { id: "skills", label: "Skills" },
-          { id: "projects", label: "Projects" },
-          { id: "contact", label: "Contact" },
-        ].map((item) => (
-          <Link
-            key={item.id}
-            className={menu === item.id ? "nav-link active" : "nav-link"}
-            to={item.id}
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={700}
-            onSetActive={() => setMenu(item.id)}
-            onClick={() => setMenu(item.id)}
-          >
-            {item.label}
-          </Link>
-        ))}
+        {SECTIONS.map((item) =>
+          isHome ? (
+            <Link
+              key={item.id}
+              className={menu === item.id ? "nav-link active" : "nav-link"}
+              to={item.id}
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={700}
+              onSetActive={() => setMenu(item.id)}
+              onClick={() => {
+                setMenu(item.id);
+                closeMenu();
+              }}
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <button
+              key={item.id}
+              type="button"
+              className="nav-link"
+              onClick={() => goToSection(item.id)}
+            >
+              {item.label}
+            </button>
+          )
+        )}
+        <RouterLink
+          to="/dashboard"
+          className={`nav-link nav-link-featured ${pathname === "/dashboard" ? "active" : ""}`}
+          onClick={closeMenu}
+        >
+          Pipeline
+        </RouterLink>
       </div>
     </nav>
   );
